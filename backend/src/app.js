@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -10,8 +11,16 @@ const PORT=process.env.SERVER_PORT;
 
 const app = express();
 
+app.use(cors());
+app.use(express.json());
+
 app.get("/", (req, res) =>{
-res.send (`<h1>${NAME}</h1> <p>Version ${VERSION}</p> <p>Descripcion ${DESCRIPTION}</p> <p>En el puerto ${PORT}</p>`);
+    res.json ({
+    name: NAME,
+    version: VERSION,
+    description: DESCRIPTION,
+    port: PORT    
+    });
 });
 
 app.listen(4000, () =>{
