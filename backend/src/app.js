@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import parqueoRoutes from "./routes/parqueo.routes.js"
+import usuarioRoutes from "./routes/usuario.routes.js"
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.get("/", (req, res) =>{
 });
 
 app.use(`/api/parqueo`,parqueoRoutes);
+app.use(`/api/usuario`,usuarioRoutes);
 
 app.listen(4000, () =>{
  console.log(`${NAME} ejecutandose en el puerto http://localhost:${PORT}`)
